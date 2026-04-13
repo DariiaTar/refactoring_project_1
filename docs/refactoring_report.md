@@ -21,23 +21,20 @@
 
 **Скріншот — original_code.py:**
 
-![cloc original](images/screenshot_original_loc.png)
+![cloc original](../images/screenshot_original_loc.png)
 
 **Скріншот — refactored_code.py:**
 
-![cloc refactored](images/screenshot_refactored_loc.png)
+![cloc refactored](../images/screenshot_refactored_loc.png)
 
-**Діаграма порівняння (cloc):**
 
-![Рядки коду](images/chart1_loc.png)
-
-*Рис. 1 — Порівняння кількості рядків: рядки коду, коментарі, порожні рядки, загальна кількість. Дані отримані через `cloc`. Зростання загальної кількості рядків пояснюється введенням 11 класів, типових анотацій (`Optional`, `list[...]`) та розширеного форматування.*
+Порівняння кількості рядків: рядки коду, коментарі, порожні рядки, загальна кількість. Дані отримані через `cloc`. Зростання загальної кількості рядків пояснюється введенням 11 класів, типових анотацій (`Optional`, `list[...]`) та розширеного форматування.*
 
 ---
 
 ### 2.2 Структурні метрики
 
-![Структурні метрики](images/chart2_structure.png)
+![Структурні метрики](../images/chart2_structure.png)
 
 *Рис. 2 — Кількість класів, функцій/методів, глобальних змінних, магічних констант і дублюючих блоків до і після рефакторингу.*
 
@@ -54,19 +51,19 @@
 
 **Скріншот — original_code.py (radon cc -s):**
 
-![radon original](images/screenshot_original_cc.png)
+![radon original](../images/screenshot_original_cc.png)
 
 **Скріншот — refactored_code.py (radon cc -s), частина 1:**
 
-![radon refactored 1](images/screenshot_refactored_cc1.png)
+![radon refactored 1](../images/screenshot_refactored_cc1.png)
 
 **Скріншот — refactored_code.py (radon cc -s), частина 2:**
 
-![radon refactored 2](images/screenshot_refactored_cc2.png)
+![radon refactored 2](../images/screenshot_refactored_cc2.png)
 
 **Діаграма цикломатичної складності:**
 
-![Цикломатична складність](images/chart3_complexity.png)
+![Цикломатична складність](../images/chart3_complexity.png)
 
 *Рис. 3 — Горизонтальний бар-чарт цикломатичної складності дев'яти ключових методів. Дані otримані через `radon cc -s`. Поряд з кожним значенням після рефакторингу — відсоток зміни. Вертикальні пунктирні лінії позначають межі зон A–B (≤10) і C (11–20).*
 
@@ -81,7 +78,7 @@
 
 ### 2.4 Зведена таблиця всіх метрик
 
-![Зведена таблиця](images/chart4_summary_table.png)
+![Зведена таблиця](../images/chart4_summary_table.png)
 
 *Рис. 4 — Зведена таблиця всіх числових метрик. Зелені рядки — покращення, жовтий — нейтральна зміна (складність збережена через саму природу логіки).*
 

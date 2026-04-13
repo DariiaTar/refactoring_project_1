@@ -1,5 +1,3 @@
-# original_code.py
-# TODO: прибрати це все і переписати нормально (Андрій, 2023)
 
 import datetime, random
 
