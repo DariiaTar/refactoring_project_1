@@ -692,3 +692,95 @@ def inventoryReport():
         if pairs > 0:
             print(f"  {x['brand']} {x['model']}: {pairs} пар на {value} грн")
     print(f"ВСЬОГО: {total_pairs} пар | вартість: {total_value} грн")
+
+
+
+######## ДЕМО ########
+
+addSupplier("Nike UA", "Ukraine", "nike@ua.com", 30)
+addSupplier("Adidas EU", "Germany", "adidas@eu.com", 25)
+addSupplier("New Balance", "USA", "nb@usa.com", 35)
+
+newShoe("Nike", "Air Max 90", "White/Red",
+        {40:3200, 41:3200, 42:3300, 43:3300, 44:3400},
+        "lifestyle", "M", "шкіра")
+newShoe("Nike", "React Infinity", "Black/White",
+        {37:4100, 38:4100, 39:4200, 40:4200, 41:4300},
+        "running", "F", "сітка")
+newShoe("Adidas", "Ultraboost 22", "Core Black",
+        {40:5200, 41:5200, 42:5300, 43:5300, 44:5400},
+        "running", "M", "сітка")
+newShoe("Adidas", "Stan Smith", "White/Green",
+        {36:2100, 37:2100, 38:2200, 39:2200, 40:2300},
+        "lifestyle", "U", "шкіра")
+newShoe("New Balance", "990v5", "Grey",
+        {40:6800, 41:6800, 42:6900, 43:6900, 44:7000},
+        "lifestyle", "M", "замша")
+newShoe("Jordan", "Air Jordan 1 High", "Chicago",
+        {40:8500, 41:8500, 42:8600, 43:8700, 44:8800},
+        "basketball", "M", "шкіра")
+
+stockUp("SH0001", 42, 10, "SUP001")
+stockUp("SH0001", 43, 8, "SUP001")
+stockUp("SH0002", 38, 5, "SUP001")
+stockUp("SH0002", 39, 7, "SUP001")
+stockUp("SH0003", 41, 12, "SUP002")
+stockUp("SH0003", 42, 10, "SUP002")
+stockUp("SH0004", 38, 15, "SUP002")
+stockUp("SH0004", 39, 12, "SUP002")
+stockUp("SH0005", 42, 6, "SUP003")
+stockUp("SH0005", 43, 4, "SUP003")
+stockUp("SH0006", 42, 3, "SUP001")
+stockUp("SH0006", 43, 2, "SUP001")
+
+registerCustomer("Олена", "Коваль", "olena@gmail.com", "0501234567", "1995-03-15")
+registerCustomer("Максим", "Руденко", "maxim@gmail.com", "0671234567", "1988-11-22")
+registerCustomer("Аліна", "Шевченко", "alina@gmail.com", "0931234567", "2001-07-08")
+registerCustomer("Богдан", "Мельник", "bogdan@gmail.com", "0661234567", "1979-04-30")
+
+addAddress("C00001", "Київ", "Хрещатик", "22", "15", True)
+addAddress("C00002", "Львів", "Городоцька", "45", None, True)
+addAddress("C00003", "Одеса", "Дерибасівська", "10", "3", True)
+
+createPromo("NIKE10", 10, "percent", min_order=2000, uses=100)
+createPromo("WELCOME", 300, "fixed", min_order=1500, uses=None)
+createPromo("VIP20", 20, "percent", min_order=5000, uses=50)
+
+addToCart("C00001", "SH0001", 42, 1)
+addToCart("C00001", "SH0004", 38, 1)
+showCart("C00001")
+o1 = placeOrder("C00001", "courier", 0, "WELCOME")
+
+addToCart("C00002", "SH0003", 42, 1)
+o2 = placeOrder("C00002", "novaposhta", 0, "NIKE10")
+
+addToCart("C00003", "SH0006", 42, 1)
+o3 = placeOrder("C00003", "pickup")
+
+addToCart("C00004", "SH0005", 42, 1)
+addToCart("C00004", "SH0001", 43, 1)
+o4 = placeOrder("C00004", "courier", 0, "VIP20", use_bonus=False)
+
+updateOrderStatus(o1, "confirmed")
+updateOrderStatus(o1, "shipped")
+updateOrderStatus(o1, "delivered")
+updateOrderStatus(o2, "confirmed")
+updateOrderStatus(o2, "delivered")
+
+rateShoe("SH0001", "C00001", 5, "чудові кросівки!")
+rateShoe("SH0003", "C00002", 4, "дуже зручні для бігу")
+
+showShoe("SH0001")
+showShoe("SH0006")
+showOrder(o1)
+showOrder(o3)
+customerStats("C00001")
+customerStats("C00002")
+salesReport(30)
+lowStockAlert(3)
+inventoryReport()
+
+results = findShoe(brand="Nike", in_stock=True)
+print(f"\nзнайдено Nike: {len(results)} модель(ей)")
+results2 = findShoe(cat="running", max_price=5000, in_stock=True)
+print(f"running до 5000 грн: {len(results2)} варіант(ів)")
